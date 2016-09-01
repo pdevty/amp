@@ -16,14 +16,14 @@ AMP is a simple AMP (Accelerated Mobile Pages) material design theme for [Hugo](
 ## Installation
 
 ```shell
-$ cd themes
+$ mkdir themes && cd themes
 $ git clone https://github.com/pdevty/amp
 ```
 
 ## Usage
 
 ```shell
-$ hugo server -t amp
+$ hugo server -t amp 
 ```
 
 ## Configuration
@@ -43,6 +43,20 @@ canonifyurls = true
   googleAnalyticsUserID = "Your Analytics User ID"
 
 # optional
+[[menu.header]]
+  name = "ABOUT"
+  weight = 1
+  url = "/about/"
+[[menu.header]]
+  name = "Tag"
+  weight = 2
+  url = "/tags/"
+[[menu.header]]
+  name = "Category"
+  weight = 3
+  url = "/categories/"
+
+# optional
 [social]
   twitter = "Your Twitter Name"
   github = "Your Github Name"
@@ -53,6 +67,23 @@ canonifyurls = true
 # optinal
 [permalinks]
   post = "/:year/:month/:day/:title/"
+```
+
+```shell
+$ hugo new post/my-new-post.md
+```
+
+content/post/my-new-post.md
+
+```toml
++++
+title = "my new post"
+date = "2016-09-01"
+tags = ["x", "y"]
+categories = ["x", "y"]
++++
+
+content here
 ```
 
 ## Contributing
