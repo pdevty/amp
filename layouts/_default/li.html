@@ -1,0 +1,16 @@
+<a class="blog__tab" href="{{ .Permalink }}">       
+  <h3 class="blog__title">{{ .Title }}</h3>
+  <div class="blog__subtitle">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+  <div class="blog__subtitle">
+    {{if .Params.categories }}
+      {{ range $index , $category := .Params.categories }}
+        {{ $category }}
+      {{ end }}
+    {{ end }}
+    {{if .Params.tags }}
+      {{ range $index , $tags := .Params.tags }}
+        #{{ $tags }}
+      {{ end }}
+    {{end}}
+  </div>
+</a>

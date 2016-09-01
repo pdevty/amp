@@ -1,0 +1,11 @@
+{{ partial "header.html" . }}
+<div class="blog">
+  <div class="blog__tabs">
+    {{ range $key,$value := .Data.Terms.ByCount }}
+      <a class="blog__tab" href="{{ $value.Name | urlize }}">       
+        <h3 class="blog__title">{{ $value.Name }} ( {{ $value.Count }} )</h3>
+      </a>
+    {{ end }}
+  </div>
+</div>
+{{ partial "footer.html" . }}
