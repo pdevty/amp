@@ -13,9 +13,3 @@ min_version = 0.15
 [author]
   name = "pdevty"
   homepage = "http://pdevty.github.io"
-
-# If porting an existing theme
-[original]
-  name = "ampproject"
-  homepage = "https://www.ampproject.org/"
-  repo = "https://github.com/ampproject/amphtml"
