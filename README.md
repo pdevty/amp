@@ -37,10 +37,7 @@ title = "Your Site Title"
 paginate = 10
 copyright = "© 2016 Copyright Text"
 canonifyurls = true
-
-# optional
-[params]
-  googleAnalyticsUserID = "Your Analytics User ID"
+googleAnalytics = "Your Tracking Id" # optional
 
 # optional
 [[menu.header]]
@@ -63,10 +60,6 @@ canonifyurls = true
   facebook = "Your facebook Name"
   gplus = "Your Google+ profile name"
   linkedin = "Your LinkedIn Name"
-
-# optinal
-[permalinks]
-  post = "/:year/:month/:day/:title/"
 ```
 
 ```shell

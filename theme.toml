@@ -6,7 +6,7 @@ license = "Apache v2"
 licenselink = "https://github.com/pdevty/amp/blob/master/LICENSE.md"
 description = "AMP (Accelerated Mobile Pages) Material Design theme"
 homepage = "https://github.com/pdevty/amp/"
-tags = ["blog", "portfolio"]
+tags = ["blog", "portfolio", "AMP", "Material Design"]
 features = ["AMP","Material Design","Google Analytics","Pagination","Tags","Categories","Social links"]
 min_version = 0.15
 
