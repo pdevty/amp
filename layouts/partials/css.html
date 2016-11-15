@@ -1,1 +1,1 @@
-<style amp-custom>{{ partial "amp-base.min.css" . | safeCSS }} {{ partial "amp-extra.css" . | safeCSS }}</style>
+<style amp-custom>{{ partial "amp-base.min.css" . | printf "%s" | safeCSS }} {{ partial "amp-extra.css" . | printf "%s" | safeCSS }}</style>
