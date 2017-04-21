@@ -38,6 +38,7 @@ paginate = 10
 copyright = "© 2016 Copyright Text"
 canonifyurls = true
 googleAnalytics = "Your Tracking Id" # optional
+muut = "Your Muut community name" # optional
 
 # optional
 [[menu.header]]
@@ -74,6 +75,7 @@ title = "my new post"
 date = "2016-09-01"
 tags = ["x", "y"]
 categories = ["x", "y"]
+comments = "true", "false" # optional
 +++
 
 content here

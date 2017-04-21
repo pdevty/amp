@@ -18,6 +18,13 @@
   {{ .Content }}
 </div>
 {{ if eq .Type "post" }}
+  {{ if .Site.Params.muut }}
+    {{ if not (eq .Params.comments false) }}
+      <br/>
+      <a class="muut" href="https://muut.com/i/{{ . }}/comments" type="dynamic">{{ .Title }}</a>
+	  <script src="//cdn.muut.com/1/moot.min.js"></script>
+	{{ end }}
+  {{ end }}
   <br/><br/>
   <div class="pagination">
     {{ if .Prev }}<a class="prev" href="{{ .Prev.Permalink }}">{{ .Prev.Title }}</a>{{ else }}<a></a>{{ end }}
