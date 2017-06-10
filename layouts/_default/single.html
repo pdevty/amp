@@ -1,27 +1,56 @@
-{{ $baseurl := .Site.BaseURL }}
 {{ partial "header.html" . }}
-<div class="blog">
-  <h1>{{ .Title }}</h1>
-  <p>{{ .Date.Format "Mon, Jan 2, 2006" }}</p>
-  <p>
-    {{ if .Params.categories }}
-      {{ range $index , $category := .Params.categories }}
-        <a href="{{ $baseurl }}categories/{{ . | urlize }}">{{ $category }}</a>
-      {{ end }}
-    {{ end }}
-    {{if .Params.tags }}
-      {{ range $index , $tag := .Params.tags }}
-        <a href="{{ $baseurl }}tags/{{ . | urlize }}">#{{ $tag }}</a>
-      {{ end }}
-    {{ end }}        
-  </p>
-  {{ .Content }}
-</div>
-{{ if eq .Type "post" }}
-  <br/><br/>
-  <div class="pagination">
-    {{ if .Prev }}<a class="prev" href="{{ .Prev.Permalink }}">{{ .Prev.Title }}</a>{{ else }}<a></a>{{ end }}
-    {{ if .Next }}<a class="next" href="{{ .Next.Permalink }}">{{ .Next.Title }}</a>{{ else }}<a></a>{{ end }}
-  </div>
-{{ end }}
+    <header class="www-header center">
+        <h1 class="mb1">{{ .Title }}</h1>
+        <div class="www-index-header-action mx-auto">{{ .Date.Format "Mon, Jan 2, 2006" }}</div>
+        <div class="www-index-header-action mx-auto">
+            {{ range .Params.categories }}
+                <a href="{{ "/categories/" | relLangURL }}{{ . | urlize }}">{{ . }}</a>
+            {{ end }}
+        </div>
+        <div class="www-index-header-action mx-auto">
+            {{ range .Params.tags }}
+                <a href="{{ "/tags/" | relLangURL }}{{ . | urlize }}">#{{ . }}</a>
+            {{ end }}
+        </div>
+
+<!--         <a href="https://github.com/ampproject/amp-by-example/blob/master/src/10_Introduction/Hello_World.html" class="block mb4 caps text-decoration-none">Edit on Github</a>
+        <div class="www-index-header-action mx-auto"><a class="ampstart-btn ampstart-btn-secondary caps mb1 mx2 xs-hide sm-hide text-decoration-none inline-block" href="/playground/#url=https://ampbyexample.com/introduction/hello_world/source/">Open in Playground</a></div>
+ -->
+    </header>
+    <amp-selector layout="container">
+        <main class="flex pl2">
+<!--
+            <aside class="www-components-sec-nav col-3 xs-hide sm-hide relative">
+                <ul class="www-component-anchors list-reset m0 p0 px1 caps">
+                    <li class="clearfix mb3"><a href="#introduction" class="www-component-anchor text-decoration-none left" option="introduction">Introduction</a></li>
+                    <li class="clearfix mb3"><a href="#head" class="www-component-anchor text-decoration-none left" option="head">Head</a></li>
+                    <li class="clearfix mb3"><a href="#body" class="www-component-anchor text-decoration-none left" option="body">Body</a></li>
+                </ul>
+            </aside>
+-->
+            <aside class="col-1 xs-hide"></aside>
+
+            <article class="www-components flex-auto col-10">
+                <section class="www-component-desc">
+                {{ .Content }}
+                </section>
+<!--
+                <section class="www-component-desc">
+                    <h2 id="introduction" class="www-heading pb4 mb2 relative h3">Introduction</h2>
+                    <p class="mb2 px1">An AMP HTML tutorial - learn the different building blocks of an AMP HTML file. AMP HTML is entirely built on existing web technologies. It achieves reliable performance by restricting some parts of HTML, CSS and JavaScript. To make up for those limitations AMP HTML defines a set of custom elements for rich content beyond basic HTML. This samples shows what&#39;s necessary to create a valid AMP HTML file.</p>
+                </section>
+                <section class="www-component-desc">
+                    <p class="mb2 px1">Doctype declaration is required.</p>
+                    <div class="abe-code-container">
+                        <div class="abe-code-preview ampstart-card mb1">
+                            <div class="abe-code fit px1 pb1 p1"><pre class="hljs html p0 m0"><span class="hljs-meta">&lt;!doctype html&gt;</span></pre></div>
+                        </div>
+                    </div>
+                </section>
+-->
+            </article>
+
+            <aside class="col-1 xs-hide"></aside>
+        </main>
+    </amp-selector>
 {{ partial "footer.html" . }}

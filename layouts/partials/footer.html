@@ -1,15 +1,76 @@
-      </div>
-    </section>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="twelve columns">
-            {{ .Site.Copyright | safeHTML }} powered by <a href="http://gohugo.io" target="_blank">hugo</a> theme <a href="https://github.com/pdevty/amp" target="_blank">amp</a> designed by <a href="http://pdevty.github.io" target="_blank">pdevty</a>
-          </div>
-        </div>
-      </div>
+    <!-- Start Footer -->
+    <footer class="ampstart-footer flex flex-column items-center pxy3">
+        {{ with .Site.Social }}
+        <ul class="ampstart-social-follow list-reset flex justify-around items-center flex-wrap m0 mb4">
+          {{ with .github }}
+              <li class="mr2">
+                <a href="https://github.com/{{ . }}" class="inline-block">
+                    <amp-img src="/img/github.svg" width="24" height="24"></amp-img>        
+                </a>
+              </li>
+          {{ end }}
+          {{ with .twitter }}
+              <li class="mr2">
+                <a href="https://twitter.com/{{ . }}" class="inline-block">
+                    <amp-img src="/img/twitter.svg" width="24" height="24"></amp-img>        
+                </a>
+              </li>
+          {{ end }}
+          {{ with .facebook }}
+              <li class="mr2">
+                <a href="https://facebook.com/{{ . }}" class="inline-block">
+                    <amp-img src="/img/facebook.svg" width="24" height="24"></amp-img>        
+                </a>
+              </li>
+          {{ end }}
+          {{ with .gplus }}
+              <li class="mr2">
+                <a href="https://plus.google.com/+{{ . }}" class="inline-block">
+                    <amp-img src="/img/google.svg" width="24" height="24"></amp-img>        
+                </a>
+              </li>
+          {{ end }}
+          {{ with .linkedin }}
+              <li class="mr2">
+                <a href="https://www.linkedin.com/in/{{ . }}" class="inline-block">
+                    <amp-img src="/img/linkedin.svg" width="24" height="24"></amp-img>        
+                </a>
+              </li>
+          {{ end }}  
+        </ul>
+        {{ end }}
+<!-- 
+        <nav class="ampstart-footer-nav">
+            <ul class="list-reset flex flex-wrap mb3">
+                <li class="px1"><a class="text-decoration-none caps h5" href="https://github.com/ampproject/amp-by-example/issues/new">feedback</a></li>
+                <li class="px1"><a class="text-decoration-none caps h5" href="https://github.com/ampproject/amp-by-example">github</a></li>
+                <li class="px1"><a class="text-decoration-none caps h5" href="/LICENSE.txt">license</a></li>
+                <li class="px1"><a class="text-decoration-none caps h5" href="https://www.google.com/intl/en/policies/privacy/">privacy</a></li>
+            </ul>
+        </nav>
+ --> 
+        <small>{{ .Site.Copyright | safeHTML }} powered by <a href="http://gohugo.io" target="_blank">hugo</a> theme <a href="https://github.com/pdevty/amp" target="_blank">amp</a> designed by <a href="http://pdevty.github.io" target="_blank">pdevty</a></small>
     </footer>
-  </div>
-</div>
+    <!-- End Footer -->
+    <amp-analytics type="googleanalytics" id="analytics">
+        <script type="application/json">
+        {
+            "vars": {
+                "account": "{{ .Site.Params.googleanalytics }}"
+            },
+            "triggers": {
+                "default pageview": {
+                    "on": "visible",
+                    "request": "pageview",
+                    "vars": {
+                        "title": "{{ .Title }}"
+                    }
+                }
+            }
+        }
+        </script>
+    </amp-analytics>
+    <!-- <amp-install-serviceworker src="/sw.js" data-iframe-src="https://ampbyexample.com/sw.html" layout="nodisplay"></amp-install-serviceworker> -->
 </body>
+
 </html>

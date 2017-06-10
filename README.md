@@ -8,7 +8,7 @@ AMP is a simple AMP (Accelerated Mobile Pages) material design theme for [Hugo](
 
 - Simple AMP (Accelerated Mobile Pages) Material Design by [ampproject](https://www.ampproject.org/)
 - Google Analytics (optional)
-- Pagination
+- Menu
 - Twitter, Facebook, GitHub, Google+, LinkedIn links (optional)
 - Tags (optional)
 - Categories (optional)
@@ -34,24 +34,12 @@ config.toml
 theme="amp"
 baseurl = "Your Site URL"
 title = "Your Site Title"
-paginate = 10
 copyright = "© 2016 Copyright Text"
 canonifyurls = true
-googleAnalytics = "Your Tracking Id" # optional
 
-# optional
-[[menu.header]]
-  name = "ABOUT"
-  weight = 1
-  url = "/about/"
-[[menu.header]]
-  name = "Tag"
-  weight = 2
-  url = "/tags/"
-[[menu.header]]
-  name = "Category"
-  weight = 3
-  url = "/categories/"
+[params]
+  description = "Your Site description for top page" #optional
+  googleanalytics = "Your Tracking Id" # optional
 
 # optional
 [social]
@@ -74,9 +62,25 @@ title = "my new post"
 date = "2016-09-01"
 tags = ["x", "y"]
 categories = ["x", "y"]
+menu:
+  main:
+    parent: tutorials
 +++
 
 content here
+```
+
+## Shortcodes
+
+```md
+<!-- img -->
+{{< img src="/img/img.png" width="320" height="50" >}}
+
+<!-- youtube videoid-->
+{{< youtube lBTCB7yLs8YTTTTT >}}
+
+<!-- twitter tweetid-->
+{{< twitter 6387934905210019852222 >}}
 ```
 
 ## Contributing

@@ -1,134 +1,81 @@
-<!DOCTYPE html>
+<!doctype html>
 <html ⚡>
+
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
-  <meta content="IE=Edge" http-equiv="X-UA-Compatible">
-
-  <title>{{ .Title }}</title>
-  <link rel="canonical" href="{{ .Permalink }}">
-
-  <link href="https://fonts.googleapis.com/css?family=Roboto:100,200,300,400,500,700" rel="stylesheet" type="text/css">
-
-  <style amp-custom>
-  {{ partial "css.css" . | safeCSS }}
-  </style>
-  
-  <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
-  <script async src="https://cdn.ampproject.org/v0.js"></script>
-  <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
-  <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
-  <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <meta charset="utf-8">
+    <link rel="canonical" href="{{ .Permalink }}" />
+    <script async src="https://cdn.ampproject.org/v0.js"></script>
+    <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
+    <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>
+    <script async custom-element="amp-sidebar" src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js"></script>
+    <script async custom-element="amp-selector" src="https://cdn.ampproject.org/v0/amp-selector-0.1.js"></script>
+    <script async custom-element="amp-analytics" src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"></script>
+    <script async custom-element="amp-twitter" src="https://cdn.ampproject.org/v0/amp-twitter-0.1.js"></script>
+    <script async custom-element="amp-youtube" src="https://cdn.ampproject.org/v0/amp-youtube-0.1.js"></script>
+    <!-- <script async custom-element="amp-install-serviceworker" src="https://cdn.ampproject.org/v0/amp-install-serviceworker-0.1.js"></script> -->
+    <script async custom-element="amp-accordion" src="https://cdn.ampproject.org/v0/amp-accordion-0.1.js"></script>
+    <title>{{ if eq  .Title  .Site.Title }}{{ .Site.Title }}{{ else }}{{ with .Title }}{{.}} - {{ end }}{{ .Site.Title }}{{ end }}</title>
+    <link href="https://fonts.googleapis.com/css?family=Inconsolata|Montserrat" rel="stylesheet">
+    <style amp-custom>{{ partial "css.css" . | safeCSS }}</style>
 </head>
-<body class="home">
-{{ with .Site.GoogleAnalytics }}
-<amp-analytics type="googleanalytics" id="analytics-ga">
-  <script type="application/json">
-  {
-    "vars": {
-      "account": "{{ . }}"
-    },
-    "triggers": {
-      "trackPageview": {
-        "on": "visible",
-        "request": "pageview"
-      }
-    }
-  }
-  </script>
-</amp-analytics>
-{{ end }}
-<amp-sidebar id='sidebar' side='right' layout='nodisplay'>
-  <button class="tab hamburger" id="menu-button" on='tap:sidebar.toggle'></button>
-  <nav>
-    <ul>
-      <li>
-        <ul>
-          {{ $url := lower .Permalink}}
-          {{ range .Site.Menus.header }}
-            <li class="{{ if eq (len (findRE (lower .URL) $url)) 1 }}is-active{{ end }}"><a class="tab desktop" href="{{ .URL }}">{{ .Name }}</a></li>
-          {{ end }}
-        </ul>
-      </li>
-    </ul>
-    {{ with .Site.Social }}
-      <div class="language desktop">
-        <amp-accordion>
-          <section>
-            <h6 class="current">
-              <a class=""><span>SOCIAL</span></a>
-            </h6>
-            <div class="others">
-              {{ with .github }}
-                <div><a href="https://github.com/{{ . }}" class=""><span>GITHUB</span></a></div>
-              {{ end }}
-              {{ with .twitter }}
-                <div><a href="https://twitter.com/{{ . }}" class=""><span>TWITTER</span></a></div>
-              {{ end }}
-              {{ with .facebook }}
-                <div><a href="https://facebook.com/{{ . }}" class=""><span>FACEBOOK</span></a></div>
-              {{ end }}
-              {{ with .gplus }}
-                <div><a href="https://plus.google.com/+{{ . }}" class=""><span>GOOGLE+</span></a></div>
-              {{ end }}
-              {{ with .linkedin }}
-                <div><a href="https://www.linkedin.com/in/{{ . }}" class=""><span>LINKEDIN</span></a></div>
-              {{ end }}
-            </div>
-          </section>
-        </amp-accordion>
-      </div>
-    {{ end }}
-  </nav>
-</amp-sidebar>
-<header class="header fixed">
-  <div class="wrap">
-    <div class="container">
-      <div class="nav-container">
-         <div class="left-nav">
-            <a href="/" class="tab header-title">
-              <span>{{ .Site.Title }}</span>
-            </a>
-        </div>
-        <div class="right alt">
-          {{ range .Site.Menus.header }}
-            <a class="tab desktop" href="{{ .URL }}">{{ .Name }}</a>
-          {{ end }}
-          {{ with .Site.Social }}
-            <div class="language desktop">
-              <amp-accordion>
-                <section>
-                  <h6 class="current">
-                    <a class=""><span>SOCIAL</span></a>
-                  </h6>
-                  <div class="others">
-                    {{ with .github }}
-                      <div><a href="https://github.com/{{ . }}" class=""><span>GITHUB</span></a></div>
-                    {{ end }}
-                    {{ with .twitter }}
-                      <div><a href="https://twitter.com/{{ . }}" class=""><span>TWITTER</span></a></div>
-                    {{ end }}
-                    {{ with .facebook }}
-                      <div><a href="https://facebook.com/{{ . }}" class=""><span>FACEBOOK</span></a></div>
-                    {{ end }}
-                    {{ with .gplus }}
-                      <div><a href="https://plus.google.com/+{{ . }}" class=""><span>GOOGLE+</span></a></div>
-                    {{ end }}
-                    {{ with .linkedin }}
-                      <div><a href="https://www.linkedin.com/in/{{ . }}" class=""><span>LINKEDIN</span></a></div>
-                    {{ end }}
-                  </div>
-                </section>
-              </amp-accordion>
-            </div>
-          {{ end }}
-          <button class="tab hamburger" id="menu-button" on='tap:sidebar.toggle'></button>
-        </div>
-      </div>
-    </div>
-  </div>
-</header>
-<div class="wrap">
-  <div class="content">
-    <section class="blade blade--blog">
-      <div class="container">
+
+<body>
+    <!-- Start Navbar -->
+    <header class="ampstart-headerbar fixed flex justify-start items-center top-0 left-0 right-0 pl2 pr4">
+        <div role="button" on="tap:header-sidebar.toggle" tabindex="0" class="ampstart-navbar-trigger md-hide lg-hide pr2">☰</div>
+        <a href="/" class="my0 mx-auto">
+            <!-- <amp-img src="/img/logo.svg" width="150" height="40" class="" layout="fixed" alt="{{ .Title }}"></amp-img> -->
+        </a>
+        <nav class="ampstart-headerbar-nav ampstart-nav xs-hide sm-hide">
+            <ul class="list-reset m0 p0 flex justify-center nowrap">
+            {{ $currentPage := . }}
+            {{ range .Site.Menus.main }}
+              {{ if .HasChildren }}
+                <li class="ampstart-nav-item abe-nav-list{{if $currentPage.HasMenuCurrent "main" . }} www-current-page{{end}}"><a href="/" class="text-decoration-none block">{{ .Name }}</a>
+                <div class="abe-list-container">
+                    <div class="abe-list-shadow"></div>
+                    <ul class="list-reset m0 p0">
+                      {{ range .Children }}
+                        <li><a href="{{.URL}}">{{ .Name }}</a></li>
+                      {{end}}
+                    </ul>
+                </div>
+                </li>
+              {{else}}
+                <li class="ampstart-nav-item{{if $currentPage.IsMenuCurrent "main" . }} www-current-page{{end}}"><a href="{{.URL}}" class="text-decoration-none block">{{ .Name }}</a></li>
+              {{end}}
+            {{end}}
+            </ul>
+        </nav>
+    </header>
+    <!-- Start Sidebar -->
+    <amp-sidebar id="header-sidebar" class="ampstart-sidebar px3 flex flex-column md-hide lg-hide" layout="nodisplay">
+        <div class="flex justify-start items-center ampstart-sidebar-header"><a href="#" on="tap:header-sidebar.toggle" class="ampstart-navbar-trigger items-start">✕</a></div>
+        <nav class="ampstart-sidebar-nav ampstart-nav">
+          {{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+            {{ if .HasChildren }}
+            <ul class="list-reset m0 p0 caps h5">
+                <li class="ampstart-nav-item ampstart-nav-dropdown relative">
+                    <!-- Start Dropdown-inline -->
+                    <amp-accordion layout="container" disable-session-states class="ampstart-dropdown">
+                        <section>
+                            <header>{{ .Name }}</header>
+                            <ul class="ampstart-dropdown-items list-reset m0 p0">
+                            {{ range .Children }}
+                                <li class="ampstart-dropdown-item"><a href="{{.URL}}" class="text-decoration-none">{{ .Name }}</a></li>
+                            {{end}}
+                            </ul>
+                        </section>
+                    </amp-accordion>
+                    <!-- End Dropdown-inline -->
+                </li>
+            </ul>
+            {{else}}
+                <a href="{{.URL}}" class="block caps h5 py1 abe-primary">{{ .Name }}</a>
+            {{end}}
+          {{end}}
+        </nav>
+    </amp-sidebar>
+    <!-- End Sidebar -->
+    <!-- End Navbar -->

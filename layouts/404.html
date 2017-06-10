@@ -1,5 +1,34 @@
 {{ partial "header.html" . }}
-<div class="blog">
-  <h1>{{ .Title }}</h1>
-</div>
+    <header class="www-header">
+        <h1 class="mb4 px2 col-12 sm-col-8 mx-auto">{{ .Title }}</h1>
+
+        <!-- <span class="h3 block mb4 px2 col-12 sm-col-8 mx-auto">{{ .Site.Params.description }}</span> -->
+
+        </header>
+    <amp-selector layout="container">
+        <main class="flex pl2">
+<!--
+            <aside class="www-components-sec-nav col-2 xs-hide sm-hide relative">
+                <ul class="www-component-anchors list-reset m0 pt0 pb3 px1 caps">
+                    <li class="clearfix mb3"><a href="/#introduction" class="www-component-anchor text-decoration-none left" option="">Introduction</a></li>
+                    <li class="clearfix mb3"><a href="/#components" class="www-component-anchor text-decoration-none left" option="">Components</a></li>
+                    <li class="clearfix mb3"><a href="/#advanced" class="www-component-anchor text-decoration-none left" option="">Advanced</a></li>
+                    <li class="clearfix mb3"><a href="/#samples_templates" class="www-component-anchor text-decoration-none left" option="">Samples &amp; Templates</a></li>
+                </ul>
+            </aside>
+-->
+            <article class="www-components flex-auto col-8">
+                <section class="www-component-desc" id="samples_templates">
+<!--
+                    <h2 class="www-heading pb4 mb2 relative">Samples &amp; Templates</h2>
+                    <div class="mb4">
+                        <p>Templates and metadata samples for different kinds of AMPs.</p>
+                    </div>
+-->
+                    <div class="abe-examples flex flex-wrap">
+                    </div>
+                </section>
+            </article>
+        </main>
+    </amp-selector>
 {{ partial "footer.html" . }}
