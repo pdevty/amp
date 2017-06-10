@@ -1,0 +1,11 @@
+                        <div class="ampstart-card abe-sample-card flex flex-column flex-auto p1 mb1">
+                            <h3 class="mb1">{{ .Title }}<i class=""></i></h3>
+                            {{if gt (len .Summary) 200}}
+                                <p class="mb1">{{slicestr .Summary 3 200 }}</p>
+                            {{else}}
+                                <p class="mb1">{{ .Summary }}</p>
+                            {{end}}
+                            <div class="abe-sample-card-actions">
+                            <!-- <a class="ampstart-btn ampstart-btn-secondary caps text-decoration-none inline-block" href="{{ .Permalink }}">Read More…</a> -->
+                            <a class="ampstart-btn caps text-decoration-none inline-block" href="{{ .Permalink }}">Read More…</a></div>
+                        </div>

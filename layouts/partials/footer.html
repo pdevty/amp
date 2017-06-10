@@ -52,6 +52,7 @@
         <small>{{ .Site.Copyright | safeHTML }} powered by <a href="http://gohugo.io" target="_blank">hugo</a> theme <a href="https://github.com/pdevty/amp" target="_blank">amp</a> designed by <a href="http://pdevty.github.io" target="_blank">pdevty</a></small>
     </footer>
     <!-- End Footer -->
+    {{if ne .Site.Params.googleanalytics nil}}
     <amp-analytics type="googleanalytics" id="analytics">
         <script type="application/json">
         {
@@ -70,6 +71,7 @@
         }
         </script>
     </amp-analytics>
+    {{end}}
     <!-- <amp-install-serviceworker src="/sw.js" data-iframe-src="https://ampbyexample.com/sw.html" layout="nodisplay"></amp-install-serviceworker> -->
 </body>
 

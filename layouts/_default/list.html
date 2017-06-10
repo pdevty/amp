@@ -27,13 +27,7 @@
 -->
                     <div class="abe-examples flex flex-wrap">
                       {{- range .Data.Pages }}
-                        <div class="ampstart-card abe-sample-card flex flex-column flex-auto p1 mb1">
-                            <h3 class="mb1">{{ .Title }}<i class=""></i></h3>
-                            <p class="mb1">{{slicestr .Summary 3 200 | markdownify }}</p>
-                            <div class="abe-sample-card-actions">
-                            <!-- <a class="ampstart-btn ampstart-btn-secondary caps text-decoration-none inline-block" href="{{ .Permalink }}">Read More…</a> -->
-                            <a class="ampstart-btn caps text-decoration-none inline-block" href="{{ .Permalink }}">Read More…</a></div>
-                        </div>
+                        {{ .Render "li" }}
                       {{- end }}
                     </div>
                 </section>
