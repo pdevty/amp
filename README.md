@@ -56,16 +56,16 @@ $ hugo new post/my-new-post.md
 
 content/post/my-new-post.md
 
-```toml
-+++
-title = "my new post"
-date = "2016-09-01"
-tags = ["x", "y"]
-categories = ["x", "y"]
+```yaml
+---
+title: "my new post"
+date: "2016-09-01"
+tags: ["x", "y"]
+categories: ["x", "y"]
 menu:
   main:
     parent: tutorials
-+++
+---
 
 content here
 ```
@@ -73,13 +73,11 @@ content here
 ## Shortcodes
 
 ```md
-<!-- img -->
+
 {{< img src="/img/img.png" width="320" height="50" >}}
 
-<!-- youtube videoid-->
 {{< youtube lBTCB7yLs8YTTTTT >}}
 
-<!-- twitter tweetid-->
 {{< twitter 6387934905210019852222 >}}
 ```
 
