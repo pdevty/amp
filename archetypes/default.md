@@ -1,4 +1,6 @@
 +++
-tags=[]
-categories=[]
+title = ""
+date = ""
+tags = []
+categories = []
 +++
